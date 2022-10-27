@@ -30,21 +30,10 @@ class Services {
         }
     }
 
-    fun connectService(context: Context) {
+    fun connectService(context: Context): Boolean {
         val intent = Intent()
         intent.action = "com.vfi.smartpos.device_service"
         intent.`package` = "com.vfi.smartpos.deviceservice"
-
-        val serviceConnection = context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
-        if (serviceConnection) {
-            Log.d("Services", "Connected")
-        } else {
-            Log.d("Services", "not connected")
-        }
-        if (serviceConnection) {
-            Log.d("Services", "Connected")
-        } else {
-            Log.d("Services", "not connected")
-        }
+        return context.bindService(intent, connection, Context.BIND_AUTO_CREATE)
     }
 }
